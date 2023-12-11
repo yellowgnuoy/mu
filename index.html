@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <title>무인상점</title>
+    <link rel="icon" href="./img/logo.png"/>
+    <link rel="apple-touch-icon" href="./img/logo.png"/>
+    
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+        @import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css");
+
+        @font-face {
+            font-family: 'HakgyoansimWoojuR';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'TAEBAEKmilkyway';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        * {
+            margin: 0;
+        }
+        h1 {
+            color: black;
+            font-family: 'HakgyoansimWoojuR';
+            text-align: center;
+            font-size: 6vw;
+            line-height: 4vw;
+            border-bottom: 1px solid #246DFF;
+            padding: 1vw;
+        }
+        h2 {
+            color: rgb(255, 255, 255);
+            font-family: 'SUIT';
+            text-align: center;
+            font-size: 2vw;
+            font-weight: 200;
+        }
+        h3 {
+            margin-top: 15vw;
+            color: black;
+            font-family: 'HakgyoansimWoojuR';
+            text-align: center;
+            font-size: 3.2vw;
+            font-weight: 300;
+            line-height: 4.5vw;
+        }
+        #textpeo {
+            margin-top: 26vw;
+            color: rgb(255, 255, 255);
+            font-family: 'SUIT';
+            text-align: center;
+            font-size: 2vw;
+            font-weight: 200;
+            line-height: 3vw;
+        }
+        #textpeople {
+            border-bottom: 1px solid white;
+            color: rgb(255, 255, 255);
+            font-family: 'HakgyoansimWoojuR';
+            text-align: center;
+            font-size: 3.2vw;
+            font-weight: 300;
+            line-height: 4.5vw;
+        }
+        h4 {
+            color: black;
+            font-family: 'SUIT';
+            text-align: center;
+            font-size: 3vw;
+            font-weight: 800;
+            margin-top: 5vw;
+        }
+        h5 {
+            line-height: 3vw;
+            text-align: center;
+            margin-top: 4vw;
+            color: rgb(0, 0, 0);
+            font-size: 2vw;
+            font-family: 'SUIT';
+            font-weight: 300;
+            /* border: 1px solid red; */
+        }
+        h6 {
+            text-align: center;
+            margin-top: 1vw;
+            color: #909090;
+            font-size: 1.4vw;
+            font-family: 'SUIT';
+            font-weight: 300;
+            /* border: 1px solid red; */
+        }
+        #big {
+            color: #246DFF;
+            font-family: 'SUIT';
+            text-align: center;
+            font-size: 10vw;
+            font-weight: 800;
+        }
+        #blue {
+            font-family: 'HakgyoansimWoojuR';
+            text-align: center;
+            font-size: 3.8vw;
+            font-weight: 300;
+            line-height: 4.5vw;
+            color: #246DFF;
+        }
+        .rollimg {
+            display: flex;
+            justify-content: center;
+        }
+        .hand {
+        position: absolute;
+        width: 20vw;
+        margin-top: 16.6vw;
+        transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        .hand.show {
+            transform: translateY(-20vw);
+            opacity: 1;
+        }
+
+        .hand.hide {
+            transform: translateY(0);
+            opacity: 0;
+        }
+        .hand2 {
+            /* position: absolute; */
+            width: 24vw;
+            margin-top: 10vw;
+            margin-bottom: 6vw;
+        }
+        .one {
+            position: absolute;
+            width: 30vw;
+            margin-top: 3vw;
+        }
+        .line {
+            position: absolute;
+            width: 0.16vw;
+            height: 18vw;
+            background-color: #c8c8c8;
+            margin-top: 27vw;
+        }
+        .line2 {
+            width: 0.16vw;
+            height: 14vw;
+            background-color: #c8c8c8;
+            margin-top: 4vw;
+        }
+        @keyframes reveal {
+            0% { clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%); }
+            100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+        }
+        
+        .reveal {
+            animation: reveal 2s forwards;
+        }
+        #num {
+            font-size: 11vw;
+            font-weight: 800;
+            border-bottom: 1px solid white;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .rolltext {
+            font-family: 'SUIT';
+            margin-top: 10vw;
+            color: black;
+            text-align: center;
+            font-size: 3vw;
+            font-weight: 800;
+            line-height: 4vw;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;/*뷰포트나 요소의 크기가 불명확한 동적 변환*/
+            justify-content: center;
+            height: 100vh;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .parall {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: visible; /* overflow 속성을 visible로 설정합니다. */
+            height: 100vh;
+            background-image: url(./img/bg.png);
+            background-size: cover;
+            transition: all 2s ease-in-out;
+            position: sticky; 
+            top: 0; /* sticky 요소를 상단에 고정시킵니다. */
+        }
+
+        .roll {
+            position: sticky;
+            display: flex;
+            margin-top: 2000px;
+            flex-direction: column;/*뷰포트나 요소의 크기가 불명확한 동적 변환*/
+            height: 100vh;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .roll2 {
+            position: sticky;
+            display: flex;
+            flex-direction: column;/*뷰포트나 요소의 크기가 불명확한 동적 변환*/
+            height: 100vh;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            background-color: rgb(255, 255, 255);
+        }
+        .content {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            color: black;
+        }
+        .animated-title {
+            margin-top: 19vw;
+            position: absolute;
+            color: white;
+            font-size: 2vw;
+            font-family: 'SUIT';
+            font-weight: 300;
+            width: 100%;
+            padding: 4vw 0 0 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            /* border: 1px solid red; */
+        }
+        .animated-title2 {
+            margin-top: 14vw;
+            position: absolute;
+            color: white;
+            font-size: 2vw;
+            font-family: 'SUIT';
+            font-weight: 300;
+            width: 100%;
+            padding: 18vw 0 0 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            /* border: 1px solid red; */
+        }
+        .animated-title .track {
+        white-space: nowrap;
+        will-change: transform;
+        animation: marquee 12s linear infinite;
+        }
+        .animated-title2 .track {
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee2 12s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes marquee2 {
+            0% {
+            transform: translateX(-100%);
+            }
+            100% {
+            transform: translateX(0%);
+            }
+        }
+        @media (hover: hover) and (min-width: 700px) {
+        .animated-title .content {
+            -webkit-transform: translateY(calc(100% - 8rem));
+            transform: translateY(calc(100% - 8rem));
+        }
+        }
+        @media (hover: hover) and (min-width: 700px) {
+        .animated-title2 .content {
+            -webkit-transform: translateY(calc(100% - 8rem));
+            transform: translateY(calc(100% - 8rem));
+        }
+        }
+        .ball01 {
+        /* width: 2vw; */
+        height: 6vw;
+        margin: 1vw;
+        margin-right: 2vw;
+        margin-left: 2vw;
+        }
+        .white {
+            height: 16vw;
+        }
+        .bluebg {
+            background-image: linear-gradient(to bottom, white 0%, #246DFF 30%);
+            height: 120vw;
+        }
+        .map {
+            width: 50vw;
+            margin-top: 4vw;
+            margin-bottom: 10vw;
+        }
+        .slideup {
+            transition: all 1s;  /* 0.5초 동안 변화가 진행됩니다 */
+            opacity: 0;  /* 초기에는 요소가 보이지 않습니다 */
+            transform: translateY(30px);  /* 초기에는 요소가 아래로 20px 이동한 위치에 있습니다 */
+        }
+
+        .slideup.on {
+            opacity: 1;  /* .on 클래스가 추가되면 요소가 보이게 됩니다 */
+            transform: translateY(0);  /* .on 클래스가 추가되면 요소가 원래 위치로 돌아옵니다 */
+        }
+        .images {
+            width: 10vw;
+        }
+
+        .mainsymbol1 {
+    position: absolute;
+    width: 3vw;
+    margin-left: -10vw;
+    margin-top: 9vw;
+    animation: motion1 2s ease-in-out 0s infinite alternate;
+}
+.mainsymbol2 {
+    position: absolute;
+    width: 5vw;
+    margin-left: 38vw;
+    margin-top: 19vw;
+    animation: motion2 1.5s ease-in-out 0s infinite alternate;
+}
+.mainsymbol3 {
+    position: absolute;
+    width: 5vw;
+    margin-left: 3vw;
+    margin-top: 19vw;
+    animation: motion3 3s ease-in-out 0s infinite alternate;
+}
+.mainsymbol4 {
+    position: absolute;
+    width: 5vw;
+    margin-left: 4vw;
+    animation: motion4 2.5s ease-in-out 0s infinite alternate;
+}
+.mainsymbol5 {
+    position: absolute;
+    width: 11vw;
+    margin-left: 3vw;
+    margin-top: -30vw;
+    animation: motion5 3s ease-in-out 0s infinite alternate;
+}
+@keyframes motion1 {
+	0% {margin-top: 10vw; transform: rotate(20deg);}
+	100% {margin-top: 12vw; transform: rotate(30deg);}
+}
+@keyframes motion2 {
+	0% {margin-top: 19vw; transform: rotate(-20deg);}
+	100% {margin-top: 22vw; transform: rotate(-40deg);}
+}
+@keyframes motion3 {
+	0% {margin-top: 2vw; transform: rotate(-40deg);}
+	100% {margin-top: 4vw; transform: rotate(-60deg);}
+}
+@keyframes motion4 {
+	0% {margin-top: 36vw; transform: rotate(-80deg);}
+	100% {margin-top: 39vw; transform: rotate(-60deg);}
+}
+@keyframes motion5 {
+	0% {margin-top: 13vw; transform: rotate(20deg);}
+	100% {margin-top: 15vw; transform: rotate(40deg);}
+}
+    </style>
+</head>
+    <section class="main">
+    <h1 class="slideup">사람없는 공간, <span id=title>무인상점</span></h1>
+    </section>
+    <div>
+    <section class="parall">
+            <div class="scroll-container">
+        <div class="scroll-content">
+            <p id="scroll-text">
+                <h2 class="slideup">2020년, 편의점 4사의<br>무인편의점 개수는<br><span id=num>499</span>개였다.</h2>
+            </p>
+        </div>
+        </div>
+    </section>
+
+    <section class="roll">
+        <h3 class="slideup">무인상점 이용 경험 <span id = blue>- “있다”</span></h3>
+        <h4>10명 중 <span id ="big">9명</span></h4>
+        <div class="rollimg">
+        <img src="./img/one.png" class="one">
+        <img src="./img/hand.png" class="hand">
+        <span class="line"></span>
+    </div>
+    </section>
+        </div>
+        <section class="main">
+            <h3><span id = blue>무인상점,</span><br>왜 늘어나고 있는걸까?</h3>
+        </section>
+        
+        <section class="roll2">
+            <h2 class="rolltext">무인상점이 생겨나는 이유</h2>
+            <div class="animated-title">
+                <div class="track">
+                    <div class="content">
+                        인건비 및 부대비용 감소 효과<img src="./img/cash.png" class="ball01">
+                        시간 제약을 받지 않는 운영<img src="./img/clock.png" class="ball01">
+                        비대면 거래 선호 현상<img src="./img/kiosk.png" class="ball01">
+                        상품 구매 과정의 단순화<img src="./img/mobile.png" class="ball01">
+                        인건비 및 부대비용 감소 효과<img src="./img/cash.png" class="ball01">
+                        시간 제약을 받지 않는 운영<img src="./img/clock.png" class="ball01">
+                        비대면 거래 선호 현상<img src="./img/kiosk.png" class="ball01">
+                        상품 구매 과정의 단순화<img src="./img/mobile.png" class="ball01">
+                    </div>
+                </div>
+            </div>
+            <div class="animated-title2">
+                <div class="track">
+                    <div class="content">
+                        인건비 및 부대비용 감소 효과<img src="./img/cash.png" class="ball01">
+                        시간 제약을 받지 않는 운영<img src="./img/clock.png" class="ball01">
+                        비대면 거래 선호 현상<img src="./img/kiosk.png" class="ball01">
+                        상품 구매 과정의 단순화<img src="./img/mobile.png" class="ball01">
+                        인건비 및 부대비용 감소 효과<img src="./img/cash.png" class="ball01">
+                        시간 제약을 받지 않는 운영<img src="./img/clock.png" class="ball01">
+                        비대면 거래 선호 현상<img src="./img/kiosk.png" class="ball01">
+                        상품 구매 과정의 단순화<img src="./img/mobile.png" class="ball01">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="roll2">
+            <h2 class="rolltext">무인상점을 이용하는 이유</h2>
+            <div class="animated-title">
+                <div class="track">
+                    <div class="content">
+                        상품이나 서비스가 상대적으로 저렴<img src="./img/cash.png" class="ball01">
+                        원하는 시간대에 이용 가능<img src="./img/clock.png" class="ball01">
+                        가까운 거리<img src="./img/kiosk.png" class="ball01">
+                        직원의 눈치를 보지 않고 비대면으로 편한 이용<img src="./img/mobile.png" class="ball01">
+                        상품이나 서비스가 상대적으로 저렴<img src="./img/cash.png" class="ball01">
+                        원하는 시간대에 이용 가능<img src="./img/clock.png" class="ball01">
+                        가까운 거리<img src="./img/kiosk.png" class="ball01">
+                        직원의 눈치를 보지 않고 비대면으로 편한 이용<img src="./img/mobile.png" class="ball01">
+                    </div>
+                </div>
+            </div>
+            <div class="animated-title2">
+                <div class="track">
+                    <div class="content">
+                        상품이나 서비스가 상대적으로 저렴<img src="./img/cash.png" class="ball01">
+                        원하는 시간대에 이용 가능<img src="./img/clock.png" class="ball01">
+                        가까운 거리<img src="./img/kiosk.png" class="ball01">
+                        직원의 눈치를 보지 않고 비대면으로 편한 이용<img src="./img/mobile.png" class="ball01">
+                        상품이나 서비스가 상대적으로 저렴<img src="./img/cash.png" class="ball01">
+                        원하는 시간대에 이용 가능<img src="./img/clock.png" class="ball01">
+                        가까운 거리<img src="./img/kiosk.png" class="ball01">
+                        직원의 눈치를 보지 않고 비대면으로 편한 이용<img src="./img/mobile.png" class="ball01">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section class="slide">
+            <h2 class="rolltext">무인상점으로 대체 가능 업종</h2>
+            <h6># 대체 가능 의견이 과반수</h6>
+
+        </section> -->
+        <section>
+            <h4>무인상점의<br><span id = "blue">편의성과 경제성</span></h4>
+            <div class="rollimg">
+                <span class="line2"></span>
+                </div>
+            <h5>소비자의 니즈를 충족시키고<br>규모를 늘려가고 있다.</h5>
+            <div class="white"></div>
+        </section>
+        <section class="bluebg">
+            <h5 class="slideup">하지만 무조건<br>무인상점에 대한 선호도가<br>높은 것은 아니었다.</h5>
+            <h2 id="textpeo"><span id="textpeople">인간이 제공</span> 하는<br>
+            서비스 및 전문적인 기술이<br>필요한 업종들은</h2>
+            <div class="rollimg">
+                <div class="wrap">
+                    <img src="./img/ball01.png" class="mainsymbol1">
+                    <img src="./img/ball02.png" class="mainsymbol2">
+                    <img src="./img/ball04.png" class="mainsymbol3">
+                    <!-- <img src="./img/ball03.png" class="mainsymbol4"> -->
+                    <img src="./img/ball05.png" class="mainsymbol5">
+                </div>
+            <img src="./img/hand2.png" class="hand2">
+            </div>
+            <h2>무인상점으로 대체하기까지<br>
+                시간이 더 필요하거나<br>
+                혹은 아예 대체가 되지 않을 수도 있다.</h2>
+        </section>
+        <section class="slide">
+            <h2 class="rolltext">지역 별 무인상점 현황</h2>
+            <h6># 2023년 기준</h6>
+            <div class="rollimg">
+            <img src="./img/map.png" class="map">
+            </div>
+        </section>
+        <script src="./js/num.js"></script>
+        <script src="./js/roll.js"></script>
+        <script src="./js/line.js"></script>
+        <script src="./js/slide-in-up.js"></script>
+        <script>
+            const content2 = document.querySelector('#title');
+
+            window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            if (scrollY > 50) {
+                content2.style.color = '#246DFF'; // 스크롤이 일정 위치를 넘어가면 배경색 변경
+            } else {
+                content2.style.color = '#101010'; // 스크롤이 일정 위치 미만일 때 초기 배경색으로 변경
+            }
+            });
+        </script>
+        <script>
+        let lastScrollTop = 0;
+
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScrollTop > lastScrollTop) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('hide');
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);  // 요소가 화면에 등장한 후 관찰을 중단
+                    } else {
+                        entry.target.classList.remove('show');
+                        entry.target.classList.add('hide');
+                    }
+                }
+                lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+            });
+        }, { threshold: 0 });
+
+        let hand = document.querySelector('.hand');
+        observer.observe(hand);
+
+
+        </script>
+        <script>
+            
+
+        </script>
+    <!-- <script>
+        let countBox = document.querySelector('#num'),
+            count = 0;
+
+        let counting = setInterval(function () {
+            if (count == 3,310) {
+                clearInterval(counting);
+                return false;
+            }
+            count += 100;
+            countBox.innerHTML = new Intl.NumberFormat().format(count);
+        }, 20);
+    </script> -->
+</body>
+</html>
